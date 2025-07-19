@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: demo
+  data:
+    mongodb:
+      uri: mongodb+srv://yk3846568:2mADtOYjOcoQWqzu@cluster0.gqqqwzj.mongodb.net/demo
+      database: demo
+      auto-index-creation: true
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.example.demo: DEBUG
+    another.package: TRACE
+                    
+
+
