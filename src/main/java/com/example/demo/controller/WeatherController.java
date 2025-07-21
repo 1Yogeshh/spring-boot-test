@@ -5,9 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.model.City;
 import com.example.demo.model.WeatherInfo;
 import com.example.demo.service.WeatherService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,12 +22,12 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @GetMapping("/{city}")
-    public ResponseEntity<?> getWeather(@PathVariable String city) {
+    @PostMapping
+    public ResponseEntity<?> getWeather(@RequestBody City city) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
         try {
-            String json = weatherService.getWeather(city);
+            String json = weatherService.getWeather(city.getName());
             WeatherInfo info = weatherService.parseWeather(json);
 
             String response = String.format(

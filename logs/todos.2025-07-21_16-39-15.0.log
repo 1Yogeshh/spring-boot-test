@@ -1,0 +1,7 @@
+16:39:15.410 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+16:39:15.415 [Thread-226] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+16:39:15.419 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+16:39:15.610 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+16:39:15.610 [Thread-226] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+16:39:15.795 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.15 with PID 22000 (C:\Users\yk384\Downloads\demo (1)\demo\target\classes started by yk384 in C:\Users\yk384\Downloads\demo (1)\demo)
+16:39:15.802 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"

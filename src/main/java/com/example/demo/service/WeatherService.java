@@ -21,9 +21,6 @@ public class WeatherService {
 
     public String getWeather(String city) {
         String url = BASE_URL.replace("API_KEY", API_KEY).replace("CITY", city);
-        // Here you would typically make an HTTP request to the weather API using the
-        // constructed URL
-        // For simplicity, we are returning the URL as a string
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         return response.getBody();
     }
