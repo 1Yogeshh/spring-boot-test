@@ -11,7 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
 
-@Document(collection = "users") // MongoDB collection name
+@Document(collection = "users") 
 @Data
 @Builder
 public class User {

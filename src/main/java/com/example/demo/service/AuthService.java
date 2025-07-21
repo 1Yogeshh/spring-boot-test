@@ -53,8 +53,6 @@ public class AuthService {
             // TODO: handle exception
             log.info("hello world" + e.getMessage());
             log.error("Registration failed: {}", user.getUsername());
-            log.debug("Debugging registration process");
-            log.trace(null, e);
             return "Registration failed due to an error!";
         }
 

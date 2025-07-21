@@ -19,11 +19,11 @@ public class AdminController {
     private AuthService authService;
 
     @GetMapping("all-users")
-    public ResponseEntity<?> getAllUsers(){
+    public ResponseEntity<?> getAllUsers() {
         List<User> users = authService.getAllUsers();
-        if(users != null && !users.isEmpty()){
+        if (users != null && !users.isEmpty()) {
             return new ResponseEntity<>(users, HttpStatus.OK);
         }
-        return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

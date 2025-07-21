@@ -6,6 +6,7 @@ import com.example.demo.service.AuthService;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,10 +31,5 @@ public class AuthController {
         return service.login(loginUser.getUsername(), loginUser.getPassword());
     }
 
-    // get all users
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return service.getAllUsers();
-    }
 }
 

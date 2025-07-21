@@ -11,10 +11,9 @@ spring:
 server:
   port: 8080
 
-logging:
-  level:
-    com.example.demo: DEBUG
-    another.package: TRACE
+# logging:
+#   level:
+#     com.example.demo: DEBUG
                     
 
 
