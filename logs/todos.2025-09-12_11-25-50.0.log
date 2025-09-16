@@ -1,0 +1,4 @@
+11:25:50.061 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.service.RedisTest
+11:25:50.229 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+11:25:50.553 [main] INFO  com.example.demo.service.RedisTest - Starting RedisTest using Java 17.0.15 with PID 22060 (started by yk384 in D:\spring\spring-boot-test)
+11:25:50.556 [main] INFO  com.example.demo.service.RedisTest - No active profile set, falling back to 1 default profile: "default"

@@ -24,7 +24,7 @@ public class AppConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(request -> request
-                .requestMatchers("/auth/**").permitAll() 
+                .requestMatchers("/auth/**", "/weather").permitAll() 
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()).httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)

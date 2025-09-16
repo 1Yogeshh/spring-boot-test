@@ -1,0 +1,2 @@
+12:28:51.177 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailServiceImp
+12:28:51.902 [main] INFO  com.example.demo.service.RedisTest - Started RedisTest in 4.654 seconds (process running for 5.951)

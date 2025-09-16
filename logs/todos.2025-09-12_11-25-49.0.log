@@ -1,0 +1,1 @@
+11:25:49.890 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.service.RedisTest]: RedisTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.

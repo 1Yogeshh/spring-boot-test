@@ -1,0 +1,6 @@
+11:38:34.136 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.service.RedisTest]: RedisTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:38:34.332 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.service.RedisTest
+11:38:34.534 [main] INFO  o.s.b.d.r.RestartApplicationListener - Restart disabled due to context in which it is running
+11:38:34.878 [main] INFO  com.example.demo.service.RedisTest - Starting RedisTest using Java 17.0.15 with PID 22272 (started by yk384 in D:\spring\spring-boot-test)
+11:38:34.880 [main] DEBUG com.example.demo.service.RedisTest - Running with Spring Boot v3.5.3, Spring v6.2.8
+11:38:34.881 [main] INFO  com.example.demo.service.RedisTest - No active profile set, falling back to 1 default profile: "default"
