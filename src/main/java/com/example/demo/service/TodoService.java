@@ -9,6 +9,7 @@ import com.example.demo.service.AuthService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,22 +27,26 @@ public class TodoService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
-    public Todo addTodo(Todo todo, String username) {
+   @Transactional
+public Todo addTodo(Todo todo, String username) {
+    try {
+        User user = authService.getUserByUsername(username);
 
-        try {
-            User user = authService.getUserByUsername(username);
-            // todo.setUser(user);
-            Todo saved = todoRepository.save(todo);
-            user.getTodos().add(saved);
-            userRepository.save(user);
-            return saved;
-
-        } catch (Exception e) {
-            System.err.println("Error while adding todo: " + e.getMessage());
-            throw new RuntimeException("Failed to add todo: " + e.getMessage());
+        if (user.getTodos() == null) {
+            user.setTodos(new ArrayList<>());
         }
+
+        Todo saved = todoRepository.save(todo);
+        user.getTodos().add(saved);
+        userRepository.save(user);
+        return saved;
+
+    } catch (Exception e) {
+        System.err.println("Error while adding todo: " + e.getMessage());
+        throw new RuntimeException("Failed to add todo: " + e.getMessage());
     }
+}
+
 
     public List<Todo> getAllTodos() {
         return todoRepository.findAll();

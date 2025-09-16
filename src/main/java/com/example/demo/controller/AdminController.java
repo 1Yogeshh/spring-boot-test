@@ -18,7 +18,7 @@ public class AdminController {
     @Autowired
     private AuthService authService;
 
-    @GetMapping("all-users")
+    @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
         List<User> users = authService.getAllUsers();
         if (users != null && !users.isEmpty()) {

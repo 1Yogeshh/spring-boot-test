@@ -1,0 +1,4 @@
+16:38:09.033 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+16:38:09.037 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+16:38:09.041 [restartedMain] INFO  com.example.demo.DemoApplication - Started DemoApplication in 1.576 seconds (process running for 742.439)
+16:38:09.042 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
