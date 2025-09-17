@@ -5,6 +5,8 @@ import com.example.demo.service.AuthService;
 import com.example.demo.service.UserDetailServiceImp;
 import com.example.demo.utils.jwtUtils;
 
+import dto.UserDTO;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -38,8 +40,13 @@ public class AuthController {
 
     // Register
     @PostMapping("/register")
-    public String register(@RequestBody User user) {
-        return service.register(user);
+    public ResponseEntity<String> register(@RequestBody @Valid UserDTO userDTO) {
+        String result = service.register(userDTO);
+        if ("Registration successful!".equals(result)) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
     }
 
     // Login
@@ -49,8 +56,8 @@ public class AuthController {
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
-            UserDetails userDetails = userDetailServiceImp.loadUserByUsername(loginUser.getUsername());  
-            
+            UserDetails userDetails = userDetailServiceImp.loadUserByUsername(loginUser.getUsername());
+
             String token = jwtUtils.generateToken(userDetails.getUsername());
             System.out.println("JWT Token: " + token);
             return ResponseEntity.ok(token);

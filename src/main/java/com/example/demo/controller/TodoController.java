@@ -3,6 +3,9 @@ package com.example.demo.controller;
 import com.example.demo.model.Todo;
 import com.example.demo.model.User;
 import com.example.demo.service.TodoService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import com.example.demo.service.AuthService;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/todos")
+@Tag(name = "Todos api", description = "APIs for managing todos")
 public class TodoController {
 
     private final TodoService todoService;

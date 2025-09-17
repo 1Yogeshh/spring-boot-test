@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 
+import dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Service;
@@ -31,28 +32,30 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public String register(User user) {
-        log.debug("Registering user: {}", user.getUsername());
+    public String register(UserDTO userDTO) {
+        log.debug("Registering user: {}", userDTO.getUsername());
         try {
-            if (user.getUsername() == null || user.getUsername().isEmpty()) {
+            if (userDTO.getUsername() == null || userDTO.getUsername().isEmpty()) {
                 return "Username is required!";
             }
 
-            if (user.getPassword() == null || user.getPassword().isEmpty()) {
+            if (userDTO.getPassword() == null || userDTO.getPassword().isEmpty()) {
                 return "Password is required!";
             }
 
-            // if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            //     return "Username already exists!";
-            // }
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            if (userRepository.findByUsername(userDTO.getUsername()).isPresent()) {
+                return "Username already exists!";
+            }
+            User user = new User();
+            user.setUsername(userDTO.getUsername());
+            user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
             user.setRoles(Arrays.asList("USER"));
             userRepository.save(user);
             return "Registration successful!";
         } catch (Exception e) {
             // TODO: handle exception
             log.info("hello world" + e.getMessage());
-            log.error("Registration failed: {}", user.getUsername());
+            log.error("Registration failed: {}", userDTO.getUsername());
             return "Registration failed due to an error!";
         }
 

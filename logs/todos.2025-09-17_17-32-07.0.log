@@ -1,0 +1,4 @@
+17:32:07.303 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:32:07.304 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17:32:07.305 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+17:32:07.307 [http-nio-8080-exec-1] DEBUG c.example.demo.service.AuthService - Registering user: bobby55
