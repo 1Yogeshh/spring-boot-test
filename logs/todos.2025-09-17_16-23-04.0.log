@@ -1,0 +1,8 @@
+16:23:04.576 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+16:23:04.578 [Thread-8] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+16:23:04.579 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+16:23:04.687 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+16:23:04.687 [Thread-8] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+16:23:04.906 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.15 with PID 24944 (D:\spring\spring-boot-test\target\classes started by yk384 in D:\spring\spring-boot-test)
+16:23:04.907 [restartedMain] DEBUG com.example.demo.DemoApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
+16:23:04.907 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
