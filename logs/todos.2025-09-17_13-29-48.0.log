@@ -1,0 +1,6 @@
+13:29:48.029 [restartedMain] DEBUG com.example.demo.filter.jwtFilter - Filter 'jwtFilter' configured for use
+13:29:48.036 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+13:29:48.068 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailServiceImp
+13:29:48.350 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+13:29:48.357 [restartedMain] INFO  com.example.demo.DemoApplication - Started DemoApplication in 2.206 seconds (process running for 318.532)
+13:29:48.359 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged

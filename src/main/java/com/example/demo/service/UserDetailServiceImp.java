@@ -29,7 +29,7 @@ public class UserDetailServiceImp implements UserDetailsService {
         // ✅ Print userDetails
         System.out.println("Authenticated UserDetails:");
         System.out.println("Username: " + userDetails.getUsername());
-        System.out.println("Password: " + userDetails.getPassword()); // (encrypted)
+        System.out.println("Password: " + userDetails.getPassword()); 
         System.out.println("Authorities: " + userDetails.getAuthorities());
 
         return userDetails;

@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.demo.filter.jwtFilter;
-import com.example.demo.service.UserDetailServiceImp;
+// import com.example.demo.service.UserDetailServiceImp;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -21,8 +21,8 @@ import org.springframework.security.config.annotation.authentication.configurati
 @EnableWebSecurity
 public class AppConfig {
 
-    @Autowired
-    private UserDetailServiceImp userDetailServiceImp;
+    // @Autowired
+    // private UserDetailServiceImp userDetailServiceImp;
 
     @Autowired
     private jwtFilter jwtFilter;
