@@ -27,26 +27,25 @@ public class TodoService {
         this.userRepository = userRepository;
     }
 
-   @Transactional
-public Todo addTodo(Todo todo, String username) {
-    try {
-        User user = authService.getUserByUsername(username);
+    @Transactional
+    public Todo addTodo(Todo todo, String username) {
+        try {
+            User user = authService.getUserByUsername(username);
 
-        if (user.getTodos() == null) {
-            user.setTodos(new ArrayList<>());
+            if (user.getTodos() == null) {
+                user.setTodos(new ArrayList<>());
+            }
+
+            Todo saved = todoRepository.save(todo);
+            user.getTodos().add(saved);
+            userRepository.save(user);
+            return saved;
+
+        } catch (Exception e) {
+            System.err.println("Error while adding todo: " + e.getMessage());
+            throw new RuntimeException("Failed to add todo: " + e.getMessage());
         }
-
-        Todo saved = todoRepository.save(todo);
-        user.getTodos().add(saved);
-        userRepository.save(user);
-        return saved;
-
-    } catch (Exception e) {
-        System.err.println("Error while adding todo: " + e.getMessage());
-        throw new RuntimeException("Failed to add todo: " + e.getMessage());
     }
-}
-
 
     public List<Todo> getAllTodos() {
         return todoRepository.findAll();
