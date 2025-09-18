@@ -7,10 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.example.demo.filter.jwtFilter;
-// import com.example.demo.service.UserDetailServiceImp;
-
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -22,9 +19,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 @EnableWebSecurity
 public class AppConfig {
 
-    // @Autowired
-    // private UserDetailServiceImp userDetailServiceImp;
-
     @Autowired
     private jwtFilter jwtFilter;
 
@@ -34,7 +28,6 @@ public class AppConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/auth/**", "/weather").permitAll()
-                        // Swagger endpoints
                         .requestMatchers(
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
@@ -43,8 +36,6 @@ public class AppConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                // .oauth2Client(Customizer.withDefaults())
-                // ✅ Google OAuth2 Login enable
                 .oauth2Login(Customizer.withDefaults())
                 .build();
     }
