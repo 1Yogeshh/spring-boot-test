@@ -64,8 +64,6 @@ public class WeatherController {
                 .map(grantedAuthority -> grantedAuthority.getAuthority().replace("ROLE_", ""))
                 .findFirst() // agar multiple roles hain, first le lo
                 .orElse("USER");
-        // System.out.println("Current User: " + auth.getName());
-        // System.out.println("Authorities: " + auth.getAuthorities());
         return "✅ Google login successful! You reached /weather" + " " + auth.getName() + " " + role;
     }
 

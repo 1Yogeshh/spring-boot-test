@@ -9,7 +9,7 @@
   </appender>
 
   <!-- Rolling File Appender (Size + Time Based) -->
-  <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  <!-- <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>logs/todos.log</file> 
 
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
@@ -21,7 +21,7 @@
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
-  </appender>
+  </appender> -->
 
   <!-- Root Logger -->
   <root level="INFO">

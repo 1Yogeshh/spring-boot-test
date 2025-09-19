@@ -1,3 +1,0 @@
-13:21:12.745 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.15 with PID 22444 (D:\spring\spring-boot-test\target\classes started by yk384 in D:\spring\spring-boot-test)
-13:21:12.749 [restartedMain] DEBUG com.example.demo.DemoApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
-13:21:12.749 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
