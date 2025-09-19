@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.City;
 import com.example.demo.model.WeatherInfo;
 import com.example.demo.service.RedisService;
+import com.example.demo.service.UserDetailServiceImp;
 import com.example.demo.service.WeatherService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -54,6 +56,14 @@ public ResponseEntity<?> getWeather(@RequestBody City city) {
         return ResponseEntity.status(500).body("Error parsing weather data.");
     }
 }
+
+   @GetMapping
+   public String weatherPage() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        // System.out.println("Current User: " + auth.getName());
+        // System.out.println("Authorities: " + auth.getAuthorities());
+        return "✅ Google login successful! You reached /weather" + " " +  auth.getName() + " " + auth.getAuthorities();
+    }
 
 
 }

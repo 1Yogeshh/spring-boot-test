@@ -1,4 +1,4 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
   <!-- Console Appender -->
@@ -10,7 +10,7 @@
 
   <!-- Rolling File Appender (Size + Time Based) -->
   <appender name="myFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>logs/todos.log</file> <!-- Suggest using logs/ directory -->
+    <file>logs/todos.log</file> 
 
     <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
       <fileNamePattern>logs/todos.%d{yyyy-MM-dd_HH-mm-ss}.%i.log</fileNamePattern>
@@ -29,4 +29,4 @@
     <appender-ref ref="myFileAppender" />
   </root>
 
-</configuration> -->
+</configuration>

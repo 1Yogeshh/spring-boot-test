@@ -53,6 +53,7 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
             UserDetails userDetails = userDetailServiceImp.loadUserByUsername(loginUser.getUsername());
             String token = jwtUtils.generateToken(userDetails.getUsername());
+            System.out.println("Generated Token: " + token);
             return ResponseEntity.ok(token);
         } catch (Exception e) {
             log.error("Exception occurred while createAuthenticationToken ", e);
