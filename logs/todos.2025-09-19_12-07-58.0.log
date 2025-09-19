@@ -1,3 +1,0 @@
-12:07:58.129 [restartedMain] DEBUG com.example.demo.filter.jwtFilter - Filter 'jwtFilter' configured for use
-12:07:58.147 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
-12:07:58.226 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailServiceImp

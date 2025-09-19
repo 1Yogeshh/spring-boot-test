@@ -1,5 +1,0 @@
-12:07:54.651 [restartedMain] INFO  com.example.demo.DemoApplication - Starting DemoApplication using Java 17.0.15 with PID 22444 (D:\spring\spring-boot-test\target\classes started by yk384 in D:\spring\spring-boot-test)
-12:07:54.657 [restartedMain] DEBUG com.example.demo.DemoApplication - Running with Spring Boot v3.5.3, Spring v6.2.8
-12:07:54.658 [restartedMain] INFO  com.example.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
-12:07:54.723 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-12:07:54.724 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'

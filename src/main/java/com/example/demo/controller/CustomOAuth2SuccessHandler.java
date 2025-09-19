@@ -37,20 +37,19 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
             Authentication authentication) throws IOException, ServletException {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
 
-        // Universal username/email
         final String username;
         String email = oAuth2User.getAttribute("email");
         if (email != null) {
             username = email;
         } else {
-            username = oAuth2User.getAttribute("login"); // GitHub fallback
+            username = oAuth2User.getAttribute("login"); 
         }
 
         // Agar user DB me nahi hai to save karo
         userRepository.findByUsername(username).orElseGet(() -> {
             User newUser = new User();
             newUser.setUsername(username);
-            newUser.setPassword(passwordEncoder.encode("OAUTH_USER")); // dummy password
+            newUser.setPassword(passwordEncoder.encode("OAUTH_USER")); 
             newUser.setRoles(Arrays.asList("USER"));
             return userRepository.save(newUser);
         });
