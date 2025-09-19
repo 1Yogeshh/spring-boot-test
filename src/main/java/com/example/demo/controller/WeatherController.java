@@ -29,41 +29,44 @@ public class WeatherController {
     private RedisService redisService;
 
     @PostMapping
-public ResponseEntity<?> getWeather(@RequestBody City city) {
-    // Cache hit check
-    String cachedResponse = redisService.get(city.getName());
-    if (cachedResponse != null) {
-        System.out.println("Cache hit for city: " + city.getName());
-        return ResponseEntity.ok(cachedResponse);
+    public ResponseEntity<?> getWeather(@RequestBody City city) {
+        // Cache hit check
+        String cachedResponse = redisService.get(city.getName());
+        if (cachedResponse != null) {
+            System.out.println("Cache hit for city: " + city.getName());
+            return ResponseEntity.ok(cachedResponse);
+        }
+
+        try {
+            String json = weatherService.getWeather(city.getName());
+            WeatherInfo info = weatherService.parseWeather(json);
+
+            String response = String.format(
+                    "Hello, %s! Here's the weather for %s:\nTemperature: %s°C\nFeels Like: %s°C\nHumidity: %s%%\nCondition: %s\nWind: %s km/h",
+                    info.getName(), info.getName(), info.getTemperature(), info.getFeelsLike(),
+                    info.getHumidity(), info.getDescription(), info.getWindSpeed());
+
+            // Save to Redis
+            redisService.set(city.getName(), response, 3600L);
+
+            return ResponseEntity.ok(response);
+
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.status(500).body("Error parsing weather data.");
+        }
     }
 
-    try {
-        String json = weatherService.getWeather(city.getName());
-        WeatherInfo info = weatherService.parseWeather(json);
-
-        String response = String.format(
-            "Hello, %s! Here's the weather for %s:\nTemperature: %s°C\nFeels Like: %s°C\nHumidity: %s%%\nCondition: %s\nWind: %s km/h",
-            info.getName(), info.getName(), info.getTemperature(), info.getFeelsLike(),
-            info.getHumidity(), info.getDescription(), info.getWindSpeed()
-        );
-
-        // Save to Redis
-        redisService.set(city.getName(), response, 3600L);
-
-        return ResponseEntity.ok(response);
-
-    } catch (JsonProcessingException e) {
-        return ResponseEntity.status(500).body("Error parsing weather data.");
-    }
-}
-
-   @GetMapping
-   public String weatherPage() {
+    @GetMapping
+    public String weatherPage() {
         var auth = SecurityContextHolder.getContext().getAuthentication();
+        // Authorities me se ROLE_ prefix hata do
+        String role = auth.getAuthorities().stream()
+                .map(grantedAuthority -> grantedAuthority.getAuthority().replace("ROLE_", ""))
+                .findFirst() // agar multiple roles hain, first le lo
+                .orElse("USER");
         // System.out.println("Current User: " + auth.getName());
         // System.out.println("Authorities: " + auth.getAuthorities());
-        return "✅ Google login successful! You reached /weather" + " " +  auth.getName() + " " + auth.getAuthorities();
+        return "✅ Google login successful! You reached /weather" + " " + auth.getName() + " " + role;
     }
-
 
 }
