@@ -2,10 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-
-import dto.UserDTO;
 import lombok.extern.slf4j.Slf4j;
-
+import com.example.demo.dto.UserDTO;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

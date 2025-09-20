@@ -4,7 +4,6 @@ import com.example.demo.model.User;
 import com.example.demo.service.AuthService;
 import com.example.demo.service.UserDetailServiceImp;
 import com.example.demo.utils.jwtUtils;
-import dto.UserDTO;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import com.example.demo.dto.UserDTO;
 
 @RestController
 @RequestMapping("/auth")
