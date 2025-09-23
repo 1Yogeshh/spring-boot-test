@@ -22,8 +22,6 @@ public class AuthService {
 
     private final UserRepository userRepository;
 
-    // private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
-
     @Autowired
     public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
