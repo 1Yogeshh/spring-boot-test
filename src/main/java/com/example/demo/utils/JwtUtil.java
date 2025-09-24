@@ -14,48 +14,51 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
 @Component
-public class jwtUtils {
-    private String SECRET_KEY = "TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V";
+public class JwtUtil {
+
+    private final String SECRET_KEY = "TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V"; // must be at least 256-bit
 
     private SecretKey getSignKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
     public String extractUsername(String token) {
-        Claims claims = extractAllClaims(token);
-        return claims.getSubject();
+        return extractAllClaims(token).getSubject();
     }
 
-    public java.util.Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         return extractAllClaims(token).getExpiration();
     }
 
     private Claims extractAllClaims(String token) {
         return Jwts.parser()
-                .verifyWith(getSignKey())
+                .verifyWith(getSignKey()) // ✅ correct for 0.12.x
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
     }
 
-    private Boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
-    //generate token for user
-    public String generateToken(String username) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, username);
+    // Generate Access Token (5 mins)
+    public String generateAccessToken(String username) {
+        return createToken(username, 5 * 60 * 1000);
     }
 
-    private String createToken(Map<String, Object> claims, String subject) {
+    // Generate Refresh Token (30 days)
+    public String generateRefreshToken(String username) {
+        return createToken(username, 30L * 24 * 60 * 60 * 1000);
+    }
+
+    private String createToken(String subject, long expirationMillis) {
+        Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()
                 .claims(claims)
                 .subject(subject)
-                .header().empty().add("typ", "JWT")
-                .and()
-                .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) 
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + expirationMillis))
                 .signWith(getSignKey())
                 .compact();
     }
@@ -70,5 +73,4 @@ public class jwtUtils {
             throw new RuntimeException("Invalid JWT");
         }
     }
-
 }

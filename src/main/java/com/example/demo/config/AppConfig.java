@@ -7,6 +7,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.example.demo.controller.CustomOAuth2SuccessHandler;
+import com.example.demo.filter.JwtFilters;
 import com.example.demo.filter.jwtFilter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -19,7 +20,8 @@ import org.springframework.security.config.annotation.authentication.configurati
 public class AppConfig {
 
         @Autowired
-        private jwtFilter jwtFilter;
+        // private jwtFilter jwtFilter;
+        private JwtFilters jwtFilter;
 
         @Autowired
         private CustomOAuth2SuccessHandler customOAuth2SuccessHandler;
