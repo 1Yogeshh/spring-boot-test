@@ -45,6 +45,7 @@ public class AuthsController {
                 new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
         UserDetails userDetails = userDetailServiceImp.loadUserByUsername(loginUser.getUsername());
         Map<String, String> tokens = authService.generateTokens(userDetails.getUsername());
+        System.out.println(tokens + "username: " + userDetails.getUsername());
         return tokens.get("accessToken");
     }
 
