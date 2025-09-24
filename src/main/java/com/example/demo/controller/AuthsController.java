@@ -33,22 +33,13 @@ public class AuthsController {
 
     @PostMapping("/login")
     public String login(@RequestBody User loginUser) {
-        // try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
             UserDetails userDetails = userDetailServiceImp.loadUserByUsername(loginUser.getUsername());
-            // String token = jwtUtils.generateToken(userDetails.getUsername());
-            // System.out.println("Generated Token: " + token);
             Map<String, String> tokens = authService.generateTokens(userDetails.getUsername());
             return tokens.get("accessToken");
-        // } catch (Exception e) {
-        //     log.error("Exception occurred while createAuthenticationToken ", e);
-        //     return new ResponseEntity<>("Incorrect username or password", HttpStatus.BAD_REQUEST);
-        // }
-
     }
 
-    //
     // Refresh endpoint
     @PostMapping("/refresh")
     public Map<String, String> refreshToken(@RequestParam String refreshToken) throws Exception {
