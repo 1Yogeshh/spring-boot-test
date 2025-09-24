@@ -21,23 +21,41 @@ public class AuthsService {
     @Autowired
     private RefreshTokenRepository refreshTokenRepository;
 
-    // Generate both tokens and save refresh token
-    public Map<String, String> generateTokens(String username) {
-        String accessToken = jwtUtils.generateAccessToken(username);
-        String refreshToken = jwtUtils.generateRefreshToken(username);
+    @Autowired
+    private RedisService redisService;
 
-        RefreshToken tokenEntity = new RefreshToken();
-        tokenEntity.setToken(refreshToken);
+    public Map<String, String> generateTokens(String username) {
+
+    // 1️⃣ Check Redis first
+    String existingToken = redisService.get("refreshToken:" + username);
+
+    String refreshToken;
+    if (existingToken != null) {
+        refreshToken = existingToken; // reuse existing valid refresh token
+    } else {
+        refreshToken = jwtUtils.generateRefreshToken(username);
+
+        // Save in DB
+        RefreshToken tokenEntity = refreshTokenRepository.findByUsername(username)
+            .orElse(new RefreshToken());
         tokenEntity.setUsername(username);
+        tokenEntity.setToken(refreshToken);
         tokenEntity.setExpiryDate(new Date(System.currentTimeMillis() + 30L * 24 * 60 * 60 * 1000));
         refreshTokenRepository.save(tokenEntity);
 
-        Map<String, String> tokens = new HashMap<>();
-        tokens.put("accessToken", accessToken);
-        tokens.put("refreshToken", refreshToken);
-
-        return tokens;
+        // Save in Redis for 30 days
+        redisService.set("refreshToken:" + username, refreshToken, 30L * 24 * 60 * 60);
     }
+
+    // Generate access token
+    String accessToken = jwtUtils.generateAccessToken(username);
+
+    return Map.of(
+        "accessToken", accessToken,
+        "refreshToken", refreshToken
+    );
+}
+
 
     // Refresh access token using refresh token
     public String refreshAccessToken(String refreshToken) throws Exception {

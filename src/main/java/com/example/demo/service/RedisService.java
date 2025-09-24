@@ -29,6 +29,7 @@ public class RedisService {
     public void set(String key, Object value, Long ttl) {
         try {
             redisTemplate.opsForValue().set(key, value, ttl, TimeUnit.SECONDS);
+            System.out.println("Set key: " + key + " with TTL: " + ttl + " seconds" + " and value: " + value);
         } catch (Exception e) {
             System.err.println("Error writing to Redis: " + e.getMessage());
         }

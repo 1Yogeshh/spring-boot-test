@@ -26,6 +26,7 @@ public class JwtFilters extends OncePerRequestFilter {
 
     @Autowired
     private JwtUtil jwtUtils;
+    
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -54,6 +55,7 @@ public class JwtFilters extends OncePerRequestFilter {
                         userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
+                System.out.println("JWT validated and authentication set for user: " + username);
             }
         }
 
