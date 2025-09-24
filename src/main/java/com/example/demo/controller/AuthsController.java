@@ -31,12 +31,6 @@ public class AuthsController {
     @Autowired
     private UserDetailServiceImp userDetailServiceImp;
 
-    // Login endpoint (for demo, just username input)
-    // @PostMapping("/login")
-    // public Map<String, String> login(@RequestParam String username) {
-    // return authService.generateTokens(username);
-    // }
-
     @PostMapping("/login")
     public String login(@RequestBody User loginUser) {
         // try {
