@@ -39,7 +39,7 @@ public class AuthsController {
     @Autowired
     private RedisService redisService;
 
-    // login endpoint
+    // login endpoint with jwt auth
     @PostMapping("/login")
     public String login(@RequestBody User loginUser) {
         authenticationManager.authenticate(
