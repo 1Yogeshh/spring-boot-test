@@ -37,6 +37,7 @@ public class JwtFilters extends OncePerRequestFilter {
         String username = null;
         String jwt = null;
 
+        // Extract JWT token from Authorization header
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             jwt = authHeader.substring(7);
             try {
